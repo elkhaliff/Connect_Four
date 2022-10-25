@@ -1,0 +1,3 @@
+# Project exclude paths
+/.gradle/
+/Connect Four/task/build/
