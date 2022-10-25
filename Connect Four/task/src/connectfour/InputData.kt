@@ -8,12 +8,17 @@ const val DEFAULT_COLS = 7
 const val MIN_VALUE = 5
 const val MAX_VALUE = 9
 
-class Menu {
+const val FIRST_PLAYER = 0
+const val SECOND_PLAYER = 1
+
+
+class InputData {
     var rows = DEFAULT_ROWS
     var cols = DEFAULT_COLS
 
-    var firstPlayer = ""
-    var secondPlayer = ""
+    var players = Array(2) { "" }
+
+    private fun makeErrorString(type: String) = "Board $type should be from 5 to 9"
 
     private fun getString(vText: String): String {
         println(vText)
@@ -36,11 +41,11 @@ class Menu {
                 rows = a.toInt()
                 cols = b.toInt()
                 if (!requiredSize(rows)) {
-                    println("Board rows should be from 5 to 9")
+                    println(makeErrorString("rows"))
                     return false
                 }
                 if (!requiredSize(cols)) {
-                    println("Board columns should be from 5 to 9")
+                    println(makeErrorString("columns"))
                     return false
                 }
                 return true
@@ -52,12 +57,12 @@ class Menu {
     }
 
 
-    fun start() {
+    fun make() {
         /**
          * Игроки
          */
-        firstPlayer = getString("First player's name: ")
-        secondPlayer = getString("Second player's name: ")
+        players[FIRST_PLAYER] = getString("First player's name:")
+        players[SECOND_PLAYER] = getString("Second player's name:")
 
         /**
          * Игровое поле
@@ -76,5 +81,7 @@ class Menu {
             )
         }
     }
+
+    fun getAction(playerId: Int) = getString("${players[playerId]}'s turn:")
 
 }

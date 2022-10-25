@@ -4,11 +4,12 @@ fun main() {
 
     println("Connect Four")
 
-    val menu = Menu()
-    menu.start()
+    val inData = InputData()
+    inData.make()
 
-    val game = ConnectFour(menu.firstPlayer, menu.secondPlayer, menu.rows, menu.cols)
-    game.newGame()
+    val connectFour = ConnectFour(inData)
+    connectFour.newGame()
+    println(connectFour)
 
-    println(game)
+    connectFour.game()
 }
