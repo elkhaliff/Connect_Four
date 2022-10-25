@@ -56,7 +56,6 @@ class InputData {
         }
     }
 
-
     fun make() {
         /**
          * Игроки
@@ -82,6 +81,5 @@ class InputData {
         }
     }
 
-    fun getAction(playerId: Int) = getString("${players[playerId]}'s turn:")
-
+    fun getAction(playerId: Int) = getString("${players[playerId]}'s turn: ")
 }
